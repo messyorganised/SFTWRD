@@ -18,20 +18,22 @@ function Download.Software {
     
     $outputPath = Join-Path -Path $SoftPath -ChildPath $outputFilename
     Invoke-WebRequest -Uri $downloadLink -OutFile $outputPath
+    write-host "
+    $outputFilename download completed.
+    "
 }
 
-function Create.New.Folder {
+function Create_New_Folder {
     New-Item -Path "$ScriptPath" -Name "Software" -ItemType Directory
     
 }
 
 #param [string] = declare the call type as a string
 
+Create_New_Folder
 
 # Start software downloads
 foreach ($i in $softwareDownloads.GetEnumerator()) {
     Download.Software -downloadLink $i.Value -outputFilename $i.Key
-    write-host "
-    $i.Key download completed.
-    "
+
 }
