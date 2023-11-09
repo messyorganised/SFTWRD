@@ -9,7 +9,7 @@ $softwareInstalled = @(
     #Enter your File name here
 
     "Chrome.exe",
-    "AReader.exe"
+    "AReader.exe",
     "OfficeSetup.exe"
     
 )
