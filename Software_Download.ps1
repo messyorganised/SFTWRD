@@ -1,4 +1,4 @@
-﻿# Base Software Path
+# Base Software Path
 $ScriptPath = Split-Path -parent $MyInvocation.MyCommand.Definition
 $SoftPath = "$ScriptPath\Software\"
 
@@ -20,6 +20,10 @@ function Download.Software {
     Invoke-WebRequest -Uri $downloadLink -OutFile $outputPath
 }
 
+function Create.New.Folder {
+    New-Item -Path "$ScriptPath" -Name "Software" -ItemType Directory
+    
+}
 
 #param [string] = declare the call type as a string
 
