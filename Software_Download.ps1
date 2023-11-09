@@ -30,7 +30,7 @@ function Create_New_Folder {
 
 #param [string] = declare the call type as a string
 
-Create_New_Folder
+#Create_New_Folder
 
 # Start software downloads
 foreach ($i in $softwareDownloads.GetEnumerator()) {
