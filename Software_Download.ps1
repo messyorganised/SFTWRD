@@ -32,6 +32,6 @@ function Create.New.Folder {
 foreach ($i in $softwareDownloads.GetEnumerator()) {
     Download.Software -downloadLink $i.Value -outputFilename $i.Key
     write-host "
-    Software download completed.
+    $i download completed.
     "
 }
