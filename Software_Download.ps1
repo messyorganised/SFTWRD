@@ -31,9 +31,16 @@ function Create_New_Folder {
 #param [string] = declare the call type as a string
 
 #Create_New_Folder
+if (-not(Test-Path $SoftPath)){
+    Write-Host "File Doesnt exist. Creating path now."
+    Create_New_Folder
+}
+
+else{
+    Write-Host "File exist."
+}
 
 # Start software downloads
 foreach ($i in $softwareDownloads.GetEnumerator()) {
     Download.Software -downloadLink $i.Value -outputFilename $i.Key
-
 }
