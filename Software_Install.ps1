@@ -26,9 +26,5 @@ function InstallSoftware {
 # Start software downloads
 foreach ($i in $softwareInstalled) {
     InstallSoftware -Filename $i -wait
-    write-host "
-
-    $i install completed.
-
-    "
+    write-host "$i install completed."  -Seperator "`n"
 }
