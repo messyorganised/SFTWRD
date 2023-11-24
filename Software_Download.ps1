@@ -18,7 +18,7 @@ function Download.Software {
     
     $outputPath = Join-Path -Path $SoftPath -ChildPath $outputFilename
     Invoke-WebRequest -Uri $downloadLink -OutFile $outputPath
-    write-host "$outputFilename download completed." -Seperator "`n"
+    write-host "$outputFilename download completed."  "`n"
 }
 
 function Create_New_Folder {
@@ -30,12 +30,12 @@ function Create_New_Folder {
 
 #Create_New_Folder
 if (-not(Test-Path $SoftPath)){
-    Write-Host "File Doesnt exist. Creating path now."  -Seperator "`n"
+    Write-Host "File Doesnt exist. Creating path now."   "`n"
     Create_New_Folder
 }
 
 else{
-    Write-Host "File exist."  -Seperator "`n"
+    Write-Host "File exist."   "`n"
 }
 
 # Start software downloads
