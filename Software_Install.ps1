@@ -2,7 +2,6 @@
 $ScriptPath = Split-Path -parent $MyInvocation.MyCommand.Definition
 $SoftwareFolderPath = "$($ScriptPath)/Software"
 
-
 # Software Download Links
 #Always remember to put comma for each line except the final line
 $softwareInstalled = @(
@@ -14,13 +13,27 @@ $softwareInstalled = @(
     
 )
 
-# Function to download software
-#param [string] = declare the call type as a string
 function InstallSoftware {
     param (
         [string]$FileName
     )
-    start-process "$SoftwareFolderPath\$FileName"
+    
+    $filePath = "$SoftwareFolderPath\$FileName"
+    
+    $fileExtension = [System.IO.Path]::GetExtension($FileName)
+    
+    switch ($fileExtension) {
+        '.exe' {
+            Start-Process -FilePath $filePath -Wait
+        }
+        '.msi' {
+            $arguments = "/i `"$filePath`" /quiet /norestart"
+            Start-Process -FilePath "msiexec.exe" -ArgumentList $arguments -Wait
+        }
+        default {
+            Write-Host "Unsupported file type for $FileName"
+        }
+    }
 }
 
 # Start software downloads
